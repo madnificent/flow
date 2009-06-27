@@ -1,0 +1,69 @@
+Flow is a micro lisp framework that allows you to define flows of data in Common Lisp.
+
+* ToDo list
+This section is probably of no interest of the normal users, yet it is handy for me to work in.
+
+** TODO Basic structure
+*** TODO Specify classes, variables and methods
+*** TODO Implement classes, variables and methods
+** TODO User interface
+*** TODO Specify the user interface
+*** TODO Implement the user interface
+** TODO MVC-example
+*** TODO Create MVC example interface
+*** TODO Implement helper methods for the interface
+
+
+* What is a flow?
+A flow is an order through which the data should pass.
+
+A common example of this is the Web MVC architecture.  In that architecture, there is a flow from the controller to the view.  Users may, however, want to define different flows, based on different rules.  Flows will allow them to do this in a simple manner.
+
+* How does it work?
+The interface to Flow is a work in progress.  The general ideas will hold, but the looks may change.
+
+In general, you will create a flow and then define methods on the flow.
+
+** Creating the flow
+A flow is defined by the order in which it should be traversed.  You can define a flow by listing the symbols defining the flow.  Once that has been done, the order of the flow has been set.  For this flow, methods can be defined.
+
+** The methods
+Methods will be followed in the order of the flow.
+
+*** definition
+Methods can be defined by specifying both the name of the method, the arguments it requests and the symbol determining the flow it is in.
+
+*** flow-forward
+Moving through the flow can be done from within the methods.  This can be done explicitly, or implicitly.
+
+**** simple flow-forward
+When nothing special is done, the name of the current method specifies the name of the next method to be called.  That method will be an element of the next element in the flow.
+You can explicitly call flow-forward.  This will forward the flow with the current methods defined on it.
+
+**** moving to a different method
+In many cases, you will not want to continue the flow with the same method name as the current method.  In that case you can use (flow-forward* method-symbol arguments)
+
+**** undefined method
+If a certain part of the flow doesn't need to do anything, you don't need to specify it.  In this case there is an implicit forwarding to the next method in the flow, with the same arguments.
+
+**** moving to a different method withoud going to the next section in the flow
+It is possible to recall the current flow with different paramters.  In that case you can redefine the parameters and choose a different method name to be called.
+
+You do this by calling the (flow-loop* new-name args*), or (flow-recurse args) if you want to call the current name, but with different arguments.  You can use (flow-loop new-name) to call a different name, with different arguments.
+
+* How is it implemented?
+The system is implemented in an object oriented way.
+
+The system can easily be split in flow-objects and flow-methods.   Flow objects are those objects defining in which order the functions should be called.  Flow methods take care of the execution and redirecting of the different methods.
+
+** flow difinition objects
+Flow objects are just simple objects defining the order in which the flow will be traversed.
+
+eg: (defpareter *vsc* (make-instance 'flow :order '(controller redirector view)))
+
+** flow methods
+Flow methods are a different beast.  For starters, you'll need to connect them to a certain flow (methods only make sense when they are connected to a flow-object).  Besides that, some support is given for methods that alter the (re-)direction within a given flow.
+
+** flow state objects
+Flow state objects are created by the system to indicate the current state of the flow.  All methods for the (re-)direction of the flow will actually operate on this object.  It bares the responsibilty of having everything operate in the correct order.
+
