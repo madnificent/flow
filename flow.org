@@ -1,18 +1,22 @@
 Flow is a micro lisp framework that allows you to define flows of data in Common Lisp.
 
-* ToDo list
-This section is probably of no interest of the normal users, yet it is handy for me to work in.
+* Time spent
 
-** TODO Basic structure
-*** TODO Specify classes, variables and methods
-*** TODO Implement classes, variables and methods
-** TODO User interface
-*** TODO Specify the user interface
-*** TODO Implement the user interface
-** TODO MVC-example
+* What needs to be done?
+** TODO Interface
+*** DONE Define the interface
+    Definition of the interface itself (no real implementations yet (just trivial things like accessors)
+    CLOSED: [2009-06-27 Sat 17:35]
+    CLOCK: [2009-06-27 Sat 17:12]--[2009-06-27 Sat 17:32] =>  0:20
+*** TODO Implement the interface
+    CLOCK: [2009-06-27 Sat 17:37]
+    Implement the previously defined interface, possibly by adding new functions and/or methods
+** TODO Documentation code example
+   Create an example of the current system, as to allow people to see how it should be used.
 *** TODO Create MVC example interface
+    Create the interface for the MVC example.
 *** TODO Implement helper methods for the interface
-
+    Implement the interface and document it.
 
 * What is a flow?
 A flow is an order through which the data should pass.
@@ -38,7 +42,7 @@ Moving through the flow can be done from within the methods.  This can be done e
 
 **** simple flow-forward
 When nothing special is done, the name of the current method specifies the name of the next method to be called.  That method will be an element of the next element in the flow.
-You can explicitly call flow-forward.  This will forward the flow with the current methods defined on it.
+You can explicitly call flow-forward.  Unless flow-forward is called, the arguments given to the next stage of the flow, are the values that resulted in evaluating the last expression of the current flow.
 
 **** moving to a different method
 In many cases, you will not want to continue the flow with the same method name as the current method.  In that case you can use (flow-forward* method-symbol arguments)
@@ -46,7 +50,7 @@ In many cases, you will not want to continue the flow with the same method name 
 **** undefined method
 If a certain part of the flow doesn't need to do anything, you don't need to specify it.  In this case there is an implicit forwarding to the next method in the flow, with the same arguments.
 
-**** moving to a different method withoud going to the next section in the flow
+**** moving to a different method without going to the next section in the flow
 It is possible to recall the current flow with different paramters.  In that case you can redefine the parameters and choose a different method name to be called.
 
 You do this by calling the (flow-loop* new-name args*), or (flow-recurse args) if you want to call the current name, but with different arguments.  You can use (flow-loop new-name) to call a different name, with different arguments.
@@ -66,4 +70,6 @@ Flow methods are a different beast.  For starters, you'll need to connect them t
 
 ** flow state objects
 Flow state objects are created by the system to indicate the current state of the flow.  All methods for the (re-)direction of the flow will actually operate on this object.  It bares the responsibilty of having everything operate in the correct order.
+
+
 
