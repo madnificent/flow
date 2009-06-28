@@ -1,0 +1,5 @@
+h1. FLOW
+
+Flow is a Common Lisp library to enforce a flow of operations your code will go through.
+
+This is a fairly trivial system to enforce the flow of data.  The code is fairly well documented through the docstrings.  You can find an example in example.lisp  Combine these two resources and you should be up and running in no time.
