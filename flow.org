@@ -14,11 +14,15 @@ Flow is a micro lisp framework that allows you to define flows of data in Common
     CLOCK: [2009-06-27 Sat 17:37]--[2009-06-27 Sat 18:41] =>  1:04
     :END:
     Implement the previously defined interface, possibly by adding new functions and/or methods
-** TODO Documentation code example
+** DONE Documentation code example
+   CLOSED: [2009-06-28 Sun 01:14]
+   CLOCK: [2009-06-28 Sun 00:18]--[2009-06-28 Sun 00:49] =>  0:31
    Create an example of the current system, as to allow people to see how it should be used.
-*** TODO Create MVC example interface
+*** DONE Create MVC example interface
+    CLOSED: [2009-06-28 Sun 01:14]
     Create the interface for the MVC example.
-*** TODO Implement helper methods for the interface
+*** DONE Implement helper methods for the interface
+    CLOSED: [2009-06-28 Sun 01:14]
     Implement the interface and document it.
 
 * What is a flow?
