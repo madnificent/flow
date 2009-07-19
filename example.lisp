@@ -1,11 +1,12 @@
-(defpackage :mvcd
+(defpackage :flow-example
   (:use :flow
 	:common-lisp)
   (:export :defview
 	   :defcontroller
-	   :defdirector))
+	   :defdirector
+	   :*mvcp*))
 
-(in-package :mvcd)
+(in-package :flow-example)
 
 (defparameter *mvcp* (make-instance 'flow :order '(controller director view)))
 

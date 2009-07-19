@@ -10,5 +10,7 @@
   :maintainer "Aad Versteden <madnificent@gmail.com>"
   :licence "BSD"
   :description "Flow allows you to define a flow in your software.  A flow is a fixed order of stages which a certain request should go through.  (eg: Controller -> View in Web-MVC)"
-  :depends-on ()
-  :components ((:file "flow")))
+  :depends-on (:fiveam)
+  :components ((:file "flow")
+	       (:file "example" :depends-on ("flow"))
+	       (:file "flow-tests" :depends-on ("flow" "example"))))

@@ -1,30 +1,5 @@
 Flow is a micro lisp framework that allows you to define flows of data in Common Lisp.
 
-* What needs to be done?
-** DONE Interface
-   CLOSED: [2009-06-27 Sat 20:14]
-*** DONE Define the interface
-    Definition of the interface itself (no real implementations yet (just trivial things like accessors)
-    CLOSED: [2009-06-27 Sat 17:35]
-    CLOCK: [2009-06-27 Sat 17:12]--[2009-06-27 Sat 17:32] =>  0:20
-*** DONE Implement the interface
-    CLOSED: [2009-06-27 Sat 20:14]
-    :CLOCK:
-    CLOCK: [2009-06-27 Sat 19:06]--[2009-06-27 Sat 20:10] =>  1:04
-    CLOCK: [2009-06-27 Sat 17:37]--[2009-06-27 Sat 18:41] =>  1:04
-    :END:
-    Implement the previously defined interface, possibly by adding new functions and/or methods
-** DONE Documentation code example
-   CLOSED: [2009-06-28 Sun 01:14]
-   CLOCK: [2009-06-28 Sun 00:18]--[2009-06-28 Sun 00:49] =>  0:31
-   Create an example of the current system, as to allow people to see how it should be used.
-*** DONE Create MVC example interface
-    CLOSED: [2009-06-28 Sun 01:14]
-    Create the interface for the MVC example.
-*** DONE Implement helper methods for the interface
-    CLOSED: [2009-06-28 Sun 01:14]
-    Implement the interface and document it.
-
 * What is a flow?
 A flow is an order through which the data should pass.
 
@@ -79,4 +54,32 @@ Flow methods are a different beast.  For starters, you'll need to connect them t
 Flow state objects are created by the system to indicate the current state of the flow.  All methods for the (re-)direction of the flow will actually operate on this object.  It bares the responsibilty of having everything operate in the correct order.
 
 
+* What needs to be done?
+  CLOSED: [2009-07-19 Sun 02:47]
+** DONE Interface
+   CLOSED: [2009-06-27 Sat 20:14]
+**** DONE Define the interface
+     Definition of the interface itself (no real implementations yet (just trivial things like accessors)
+     CLOSED: [2009-06-27 Sat 17:35]
+     CLOCK: [2009-06-27 Sat 17:12]--[2009-06-27 Sat 17:32] =>  0:20
+**** DONE Implement the interface
+     CLOSED: [2009-06-27 Sat 20:14]
+     :CLOCK:
+     CLOCK: [2009-06-27 Sat 19:06]--[2009-06-27 Sat 20:10] =>  1:04
+     CLOCK: [2009-06-27 Sat 17:37]--[2009-06-27 Sat 18:41] =>  1:04
+     :END:
+     Implement the previously defined interface, possibly by adding new functions and/or methods
+** DONE Documentation code example
+   CLOSED: [2009-06-28 Sun 01:14]
+   CLOCK: [2009-06-28 Sun 00:18]--[2009-06-28 Sun 00:49] =>  0:31
+   Create an example of the current system, as to allow people to see how it should be used.
+**** DONE Create MVC example interface
+     CLOSED: [2009-06-28 Sun 01:14]
+     Create the interface for the MVC example.
+**** DONE Implement helper methods for the interface
+     CLOSED: [2009-06-28 Sun 01:14]
+     Implement the interface and document it.
+** TODO Testing
+Tests for the public interface are needed to kill the evil bugs.
 
+The tests can also be partially used to see how Flow is used in general.
